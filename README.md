@@ -5,16 +5,57 @@ Rule engine for business policies
 ### Demo
 
 ```
-# Запускаем OPA
+# 1. Запускаем движок с новой папкой
 opa run --server examples/
 
-# --- товар, который проходит все фильтры ---
-curl -s -X POST localhost:8181/v1/data/flow/feed_selection/decision \
-     -d '{"input":{"manufacturer":"Apple","color":"black","price":450}}'
-# {"result":{"keep":true,"passed":["manufacturer","color","price"],"failed":[]}}
+# 2. Валидный товар
+curl -s -X POST localhost:8181/v1/data/flow/feed_selection_full/decision \
+  -d '{
+        "input": {
+          "manufacturer":"Apple",  "color":"white", "price":799,
+          "category":"electronics","weight_kg":1.2, "stock_qty":34,
+          "discount_percent":20
+        }}' | jq
+        
+{
+  "result": {
+    "failed": [],
+    "keep": true,
+    "passed": [
+      "category",
+      "color",
+      "discount",
+      "in_stock",
+      "manufacturer",
+      "price",
+      "size"
+    ]
+  }
+}
 
-# --- товар, который проваливает ценовой фильтр ---
-curl -s -X POST localhost:8181/v1/data/flow/feed_selection/decision \
-     -d '{"input":{"manufacturer":"Sony","color":"white","price":2000}}'
-# {"result":{"keep":false,"passed":["manufacturer","color"],"failed":["price"]}}
+# 3. Невалидный товар (вне диапазона цены и нет на складе)
+curl -s -X POST localhost:8181/v1/data/flow/feed_selection_full/decision \
+  -d '{
+        "input": {
+          "manufacturer":"Sony",   "color":"black", "price":1500,
+          "category":"electronics","weight_kg":1.0, "stock_qty":0,
+          "discount_percent":15
+        }}' | jq
+
+{
+  "result": {
+    "failed": [
+      "in_stock",
+      "price"
+    ],
+    "keep": false,
+    "passed": [
+      "category",
+      "color",
+      "discount",
+      "manufacturer",
+      "size"
+    ]
+  }
+}
 ```
