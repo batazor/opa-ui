@@ -1,0 +1,21 @@
+{
+  "input": {
+    "params": {
+      "tax_mapping": {
+        "RU": {
+          "сочи": 0,
+          "*": 10
+        },
+        "DE": {
+          "*": 15
+        }
+      }
+    },
+    "taxs": [
+      { "country": "RU", "city": "Сочи" },
+      { "country": "RU", "city": "Москва" },
+      { "country": "DE", "city": "Берлин" },
+      { "country": "FR", "city": "Париж" }
+    ]
+  }
+}

@@ -148,3 +148,37 @@ curl -s -X POST http://localhost:8181/v1/data/flow/apply_feed_filters/results \
   ]
 }
 ```
+
+### Demo 4
+
+```
+curl -s -X POST http://localhost:8181/v1/data/flow/calculate_taxes/results \
+     -d @examples/fixtures/tax_input.json | jq
+```
+
+```json
+{
+  "result": [
+    {
+      "index": 0,
+      "reason": "matched_city",
+      "tax": 0
+    },
+    {
+      "index": 1,
+      "reason": "matched_country",
+      "tax": 10
+    },
+    {
+      "index": 2,
+      "reason": "matched_country",
+      "tax": 15
+    },
+    {
+      "index": 3,
+      "reason": "default",
+      "tax": 20
+    }
+  ]
+}
+```
