@@ -102,3 +102,49 @@ curl -s -X POST localhost:8181/v1/data/flow/tickets_filter/results \
   ]
 }
 ```
+
+#### Demo 3
+
+```
+curl -s -X POST http://localhost:8181/v1/data/flow/apply_feed_filters/results \
+     -d @examples/fixtures/feeds_input.json | jq
+```
+
+```json
+{
+  "result": [
+    {
+      "failed": [
+        "upsells"
+      ],
+      "index": 0,
+      "keep": false,
+      "passed": [
+        "airline",
+        "priceType"
+      ]
+    },
+    {
+      "failed": [],
+      "index": 1,
+      "keep": true,
+      "passed": [
+        "airline",
+        "priceType",
+        "upsells"
+      ]
+    },
+    {
+      "failed": [
+        "airline",
+        "upsells"
+      ],
+      "index": 2,
+      "keep": false,
+      "passed": [
+        "priceType"
+      ]
+    }
+  ]
+}
+```

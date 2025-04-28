@@ -7,8 +7,8 @@
       ],
       "excluded_primary_supp_codes": [
         "S7",
-        "U6",
-        "MX"
+        "S6",
+        "S5"
       ]
     },
     "tickets": [

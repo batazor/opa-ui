@@ -1,0 +1,16 @@
+{
+  "input": {
+    "params": {
+      "filter_airlines": ["AA", "BB"],
+      "pricing_ticketing": {
+        "priceType": ["X1"]
+      },
+      "airlines_with_upsells": ["BB"]
+    },
+    "feeds": [
+      { "airline": "AA", "pricing_ticketing": { "priceType": "X1" } },
+      { "airline": "BB", "pricing_ticketing": { "priceType": "X1" } },
+      { "airline": "ZZ", "pricing_ticketing": { "priceType": "X1" } }
+    ]
+  }
+}
