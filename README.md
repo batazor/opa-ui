@@ -62,12 +62,12 @@ curl -s -X POST localhost:8181/v1/data/flow/feed_selection_full/decision \
 
 #### Demo 2
 
-```
+```shell
 curl -s -X POST localhost:8181/v1/data/flow/tickets_filter/results \
      -d @examples/fixtures/tickets_input.json | jq
 ```
 
-```
+```json
 {
   "result": [
     {
@@ -105,7 +105,7 @@ curl -s -X POST localhost:8181/v1/data/flow/tickets_filter/results \
 
 #### Demo 3
 
-```
+```shell
 curl -s -X POST http://localhost:8181/v1/data/flow/apply_feed_filters/results \
      -d @examples/fixtures/feeds_input.json | jq
 ```
@@ -151,7 +151,7 @@ curl -s -X POST http://localhost:8181/v1/data/flow/apply_feed_filters/results \
 
 ### Demo 4
 
-```
+```shell
 curl -s -X POST http://localhost:8181/v1/data/flow/calculate_taxes/results \
      -d @examples/fixtures/tax_input.json | jq
 ```

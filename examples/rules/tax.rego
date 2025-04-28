@@ -5,7 +5,7 @@ default tax_mapping := {}
 
 tax_mapping := input.params.tax_mapping if input.params.tax_mapping
 
-# Единое правило с else-блоками
+# Теперь это полноценная функция от одного аргумента
 calculate_tax_with_reason(item) := {"tax": tax, "reason": "matched_city"} if {
     country := item.country
     city := lower(item.city)
