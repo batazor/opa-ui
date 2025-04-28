@@ -182,3 +182,27 @@ curl -s -X POST http://localhost:8181/v1/data/flow/calculate_taxes/results \
   ]
 }
 ```
+
+### Test
+
+```shell
+opa test examples/ --verbose
+```
+
+```shell
+examples/rules/tax_test.rego:
+data.rules.tax_rules_test.test_calculate_tax_for_sochi: PASS (1.001544ms)
+
+  ✔️ Checked RU/сочи: tax=0 reason=matched_city
+
+data.rules.tax_rules_test.test_calculate_tax_for_moscow: PASS (593.441µs)
+
+  ✔️ Checked RU/москва: tax=10 reason=matched_country
+
+data.rules.tax_rules_test.test_calculate_tax_for_paris: PASS (610.128µs)
+
+  ✔️ Checked FR/париж: tax=20 reason=default
+
+--------------------------------------------------------------------------------
+PASS: 3/3
+```
