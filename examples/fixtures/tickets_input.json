@@ -1,0 +1,32 @@
+{
+  "input": {
+    "params": {
+      "excluded_airlines": [
+        "231",
+        "321"
+      ],
+      "excluded_primary_supp_codes": [
+        "S7",
+        "U6",
+        "MX"
+      ]
+    },
+    "tickets": [
+      {
+        "airline_code": "231",
+        "primary_supp_code": "DL",
+        "fare": 120
+      },
+      {
+        "airline_code": "999",
+        "primary_supp_code": "S7",
+        "fare": 200
+      },
+      {
+        "airline_code": "999",
+        "primary_supp_code": "DL",
+        "fare": 180
+      }
+    ]
+  }
+}

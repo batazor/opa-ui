@@ -59,3 +59,46 @@ curl -s -X POST localhost:8181/v1/data/flow/feed_selection_full/decision \
   }
 }
 ```
+
+#### Demo 2
+
+```
+curl -s -X POST localhost:8181/v1/data/flow/tickets_filter/results \
+     -d @examples/fixtures/tickets_input.json | jq
+```
+
+```
+{
+  "result": [
+    {
+      "failed": [
+        "airline"
+      ],
+      "index": 0,
+      "keep": false,
+      "passed": [
+        "primary_supp"
+      ]
+    },
+    {
+      "failed": [
+        "primary_supp"
+      ],
+      "index": 1,
+      "keep": false,
+      "passed": [
+        "airline"
+      ]
+    },
+    {
+      "failed": [],
+      "index": 2,
+      "keep": true,
+      "passed": [
+        "airline",
+        "primary_supp"
+      ]
+    }
+  ]
+}
+```
