@@ -206,3 +206,17 @@ data.rules.tax_rules_test.test_calculate_tax_for_paris: PASS (610.128µs)
 --------------------------------------------------------------------------------
 PASS: 3/3
 ```
+
+### buildin: currency
+
+```shell
+curl -s -X POST "http://localhost:8181/v1/data/utils/currency/convert_api_result" \
+  -H "Content-Type: application/json" \
+  -d '{"input": {"price": 100, "from": "RUB", "to": "USD"}}' | jq
+```
+
+```json
+{
+  "result": 1.00
+}
+```
